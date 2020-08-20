@@ -17,7 +17,20 @@
 		5EA00DC124ED67CC00640945 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA00DBF24ED67CC00640945 /* GameViewController.swift */; };
 		5EA00DC224ED67CC00640945 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EA00DC024ED67CC00640945 /* GameViewController.xib */; };
 		5EA00DC424ED6AF200640945 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA00DC324ED6AF200640945 /* GameView.swift */; };
+		A7BF977E24EEC40600EECF99 /* RPS_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BF977D24EEC40600EECF99 /* RPS_GameTests.swift */; };
+		A7BF978624EED3D600EECF99 /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BF978524EED3D600EECF99 /* Cancelable.swift */; };
+		A7BF978824EED6AE00EECF99 /* Boxed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BF978724EED6AE00EECF99 /* Boxed.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A7BF978024EEC40600EECF99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EA00D9C24ED664800640945 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EA00DA324ED664800640945;
+			remoteInfo = "RPS-Game";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5E79FA7124EE03CC00AE7A15 /* RPSGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPSGame.swift; sourceTree = "<group>"; };
@@ -32,10 +45,22 @@
 		5EA00DBF24ED67CC00640945 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5EA00DC024ED67CC00640945 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		5EA00DC324ED6AF200640945 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		A7BF977B24EEC40600EECF99 /* RPS-GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RPS-GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7BF977D24EEC40600EECF99 /* RPS_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPS_GameTests.swift; sourceTree = "<group>"; };
+		A7BF977F24EEC40600EECF99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7BF978524EED3D600EECF99 /* Cancelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancelable.swift; sourceTree = "<group>"; };
+		A7BF978724EED6AE00EECF99 /* Boxed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boxed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5EA00DA124ED664800640945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF977824EEC40600EECF99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -49,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				5E79FA7424EE03FF00AE7A15 /* Box.swift */,
+				A7BF978724EED6AE00EECF99 /* Boxed.swift */,
+				A7BF978524EED3D600EECF99 /* Cancelable.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -83,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA00DA624ED664800640945 /* RPS-Game */,
+				A7BF977C24EEC40600EECF99 /* RPS-GameTests */,
 				5EA00DA524ED664800640945 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA00DA424ED664800640945 /* RPS-Game.app */,
+				A7BF977B24EEC40600EECF99 /* RPS-GameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +172,15 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		A7BF977C24EEC40600EECF99 /* RPS-GameTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7BF977D24EEC40600EECF99 /* RPS_GameTests.swift */,
+				A7BF977F24EEC40600EECF99 /* Info.plist */,
+			);
+			path = "RPS-GameTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,6 +201,24 @@
 			productReference = 5EA00DA424ED664800640945 /* RPS-Game.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A7BF977A24EEC40600EECF99 /* RPS-GameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7BF978424EEC40600EECF99 /* Build configuration list for PBXNativeTarget "RPS-GameTests" */;
+			buildPhases = (
+				A7BF977724EEC40600EECF99 /* Sources */,
+				A7BF977824EEC40600EECF99 /* Frameworks */,
+				A7BF977924EEC40600EECF99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7BF978124EEC40600EECF99 /* PBXTargetDependency */,
+			);
+			name = "RPS-GameTests";
+			productName = "RPS-GameTests";
+			productReference = A7BF977B24EEC40600EECF99 /* RPS-GameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -175,6 +231,10 @@
 				TargetAttributes = {
 					5EA00DA324ED664800640945 = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					A7BF977A24EEC40600EECF99 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 5EA00DA324ED664800640945;
 					};
 				};
 			};
@@ -192,6 +252,7 @@
 			projectRoot = "";
 			targets = (
 				5EA00DA324ED664800640945 /* RPS-Game */,
+				A7BF977A24EEC40600EECF99 /* RPS-GameTests */,
 			);
 		};
 /* End PBXProject section */
@@ -207,6 +268,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7BF977924EEC40600EECF99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -219,12 +287,30 @@
 				5EA00DC124ED67CC00640945 /* GameViewController.swift in Sources */,
 				5E79FA7524EE03FF00AE7A15 /* Box.swift in Sources */,
 				5EA00DC424ED6AF200640945 /* GameView.swift in Sources */,
+				A7BF978624EED3D600EECF99 /* Cancelable.swift in Sources */,
 				5EA00DAA24ED664800640945 /* SceneDelegate.swift in Sources */,
+				A7BF978824EED6AE00EECF99 /* Boxed.swift in Sources */,
 				5E79FA7724EE054300AE7A15 /* GameViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7BF977724EEC40600EECF99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7BF977E24EEC40600EECF99 /* RPS_GameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A7BF978124EEC40600EECF99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EA00DA324ED664800640945 /* RPS-Game */;
+			targetProxy = A7BF978024EEC40600EECF99 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5EA00DB224ED664900640945 /* LaunchScreen.storyboard */ = {
@@ -388,6 +474,46 @@
 			};
 			name = Release;
 		};
+		A7BF978224EEC40600EECF99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3AMPL46LPV;
+				INFOPLIST_FILE = "RPS-GameTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytyubox.RPS-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RPS-Game.app/RPS-Game";
+			};
+			name = Debug;
+		};
+		A7BF978324EEC40600EECF99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3AMPL46LPV;
+				INFOPLIST_FILE = "RPS-GameTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ytyubox.RPS-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RPS-Game.app/RPS-Game";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -405,6 +531,15 @@
 			buildConfigurations = (
 				5EA00DB924ED664900640945 /* Debug */,
 				5EA00DBA24ED664900640945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7BF978424EEC40600EECF99 /* Build configuration list for PBXNativeTarget "RPS-GameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7BF978224EEC40600EECF99 /* Debug */,
+				A7BF978324EEC40600EECF99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

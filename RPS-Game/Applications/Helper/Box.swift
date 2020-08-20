@@ -6,7 +6,9 @@
 //  Copyright © 2020 Jeremy Xue. All rights reserved.
 //
 
-import Foundation
+protocol BindingRemoveable {
+    func removeBinding()
+}
 
 class Box<Value> {
     
@@ -14,7 +16,8 @@ class Box<Value> {
     
     // MARK: Properties
     private var valueChangedAction: ValueChangedAction?
-    var value: Value {
+    var value: Value
+    {
         didSet {
             valueChangedAction?(value)
         }
@@ -24,56 +27,22 @@ class Box<Value> {
     init(_ value: Value) {
         self.value = value
     }
+    deinit {
+        print(Self.self, #function)
+    }
 }
 
 // MARK: - Methods
-extension Box:Cancelable {
-    
+extension Box {
     func bind(_ action: @escaping ValueChangedAction) -> Cancelable {
         valueChangedAction = action
         valueChangedAction?(value)
         return AnyCancelable(self)
     }
-    
-    func cancel() {
-        self.valueChangedAction = nil
-    }
 }
 
-protocol Cancelable:AnyObject {
-    func cancel()
-    func store(_ array: inout Array<Cancelable>)
-}
-extension Cancelable {
-    func store(_ array: inout Array<Cancelable>) {
-        array.append(self)
-    }
-}
-
-class AnyCancelable:Cancelable {
-    internal init(_ target: Cancelable) {
-        self.target = target
-    }
-    
-    unowned var target: Cancelable?
-    func cancel() {
-        target?.cancel()
-    }
-    
-    deinit {
-        target?.cancel()
-    }
-}
-@propertyWrapper
-struct Boxed<Value> {
-    
-    var projectedValue: Box<Value>
-    var wrappedValue: Value {
-        get{projectedValue.value}
-        set{projectedValue.value = newValue}
-    }
-    
-    init(wrappedValue: Value) {
-        projectedValue = Box(wrappedValue)
+extension Box:BindingRemoveable {
+    func removeBinding() {
+        valueChangedAction = nil
     }
 }
