@@ -40,7 +40,7 @@ extension Box:Cancelable {
     }
 }
 
-protocol Cancelable {
+protocol Cancelable:AnyObject {
     func cancel()
     func store(_ array: inout Array<Cancelable>)
 }
@@ -55,13 +55,13 @@ class AnyCancelable:Cancelable {
         self.target = target
     }
     
-    var target: Cancelable
+    unowned var target: Cancelable?
     func cancel() {
-        target.cancel()
+        target?.cancel()
     }
     
     deinit {
-        target.cancel()
+        target?.cancel()
     }
 }
 @propertyWrapper
