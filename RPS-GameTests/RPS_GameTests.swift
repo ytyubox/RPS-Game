@@ -11,26 +11,46 @@ import XCTest
 
 class RPS_GameTests: XCTestCase {
 
-    func testBoxed() {
+    func testBoxedBindWithClosure() {
         let deinitTarget = DeinitTarget()
         var target:TestTarget? = TestTarget(deinitTarget)
+        target?.bindJob = target?.$i.bind { [unowned self] (value) in
+            print(#function, value)
+            print(self)
+        }
         target?.i = 1
         target = nil
         XCTAssertTrue(deinitTarget.called)
     }
+    
+    func testBoxedBindWithAssignOwned() {
+        let deinitTarget = DeinitTarget()
+        var target:TestTarget? = TestTarget(deinitTarget)
+        target?.bindJob = target?.$i.bind(to: \.i2, unowned: target!)
+        target?.i = 1
+        target = nil
+        XCTAssertTrue(deinitTarget.called)
+    }
+    
+    func testBoxedBindWithAssignThatRetain() {
+           let deinitTarget = DeinitTarget()
+           var target:TestTarget? = TestTarget(deinitTarget)
+           target?.bindJob = target?.$i.bind(to: \.i2, on: target!)
+           target?.i = 1
+           target = nil
+           XCTAssertFalse(deinitTarget.called)
+       }
 }
 
 
 class TestTarget {
     @Boxed var i = 0
     let deinitTarget:DeinitTarget
-    var bindJob:Cancelable?
+    var bindJob:AnyCancellable?
+    var i2 = 0
     init(_ deinitTarget:DeinitTarget) {
         self.deinitTarget = deinitTarget
-        bindJob = $i.bind { (value) in
-            print(#function, value)
-        }
-    }
+}
     deinit {
         deinitTarget.called = true
         print(Self.self, #function)

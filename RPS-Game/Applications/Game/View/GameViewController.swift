@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     }
     
     private var gameViewModel: GameViewModel?
-    private var bindJobs:Array<Cancelable> = []
+    private var bindJobs:Array<AnyCancellable> = []
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,18 +41,18 @@ class GameViewController: UIViewController {
     private func setupViewModel() {
         let game = RPSGame()
         gameViewModel = GameViewModel(game: game)
-        gameViewModel?.$message.bind { (msg) in
-            self.gameView?.messageLabel.text = msg
-        }.store(&bindJobs)
-        gameViewModel?.$computerItemEmoji.bind{ (emoji) in
-            self.gameView?.computerChooseItemLabel.text = emoji
-        }.store(&bindJobs)
-        gameViewModel?.$playerItemEmoji.bind{ (emoji) in
-            self.gameView?.playerChooseItemLabel.text = emoji
-        }.store(&bindJobs)
-        gameViewModel?.$roundTitle.bind { (title) in
-            self.gameView?.roundLabel.text = title
-        }.store(&bindJobs)
+        gameViewModel?.$message
+            .bind(to: \.text!, unowned: gameView!.messageLabel)
+            .store(&bindJobs)
+        gameViewModel?.$computerItemEmoji
+            .bind(to: \.text!, unowned: gameView!.computerChooseItemLabel)
+            .store(&bindJobs)
+        gameViewModel?.$playerItemEmoji
+            .bind(to: \.text!, unowned: gameView!.playerChooseItemLabel)
+            .store(&bindJobs)
+        gameViewModel?.$roundTitle
+            .bind(to: \.text!, unowned: gameView!.roundLabel)
+            .store(&bindJobs)
     }
     
     // MARK: Features

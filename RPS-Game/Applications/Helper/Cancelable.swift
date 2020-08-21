@@ -7,28 +7,29 @@
 //
 
 
-protocol Cancelable:AnyObject {
+protocol AnyCancellable:AnyObject {
     func cancel()
-    func store(_ array: inout Array<Cancelable>)
+    func store(_ array: inout Array<AnyCancellable>)
 }
-extension Cancelable {
-    func store(_ array: inout Array<Cancelable>) {
+extension AnyCancellable {
+    func store(_ array: inout Array<AnyCancellable>) {
         array.append(self)
     }
 }
 
-class AnyCancelable:Cancelable {
+class Cancelable:AnyCancellable {
+    private var _cancel: (() -> Void)?
     internal init(_ target: BindingRemoveable) {
-        self.target = target
+        self._cancel = target.removeBinding
     }
     
-    var target: BindingRemoveable
     func cancel() {
-        target.removeBinding()
+        _cancel?()
+        _cancel = nil
     }
     
     deinit {
-        target.removeBinding()
+        _cancel?()
         print(self.self,#function)
     }
 }

@@ -8,8 +8,9 @@
 
 
 @propertyWrapper
+public
 struct Boxed<Value> {
-    
+    public
     init(wrappedValue: Value) {
         value = wrappedValue
     }
@@ -43,6 +44,7 @@ struct Boxed<Value> {
     @Boxed is only available on properties of classes
     """)
     /// This will never be call because the Boxed in struct always cause compile error
+    public
     var wrappedValue: Value {
         get{
             fatalError("@Boxed is only available on properties of classes")
