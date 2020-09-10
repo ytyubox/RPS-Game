@@ -10,13 +10,16 @@ import UIKit
 import Combine
 
 class GameViewController: UIViewController {
-    
+    convenience init(gameViewModel: GameViewModel) {
+        self.init()
+        self.gameViewModel = gameViewModel
+    }
     // MARK: Properties
     private var gameView: GameView? {
         view as? GameView
     }
     
-    private var gameViewModel: GameViewModel?
+    var gameViewModel: GameViewModel!
     private var subscriptions: Set<AnyCancellable> = []
     
     // MARK: Lifecycle
@@ -41,8 +44,6 @@ class GameViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        let game = RPSGame()
-        gameViewModel = GameViewModel(game: game)
         guard let gameView = gameView else { return }
         gameViewModel?.$message
             .assign(to: \.messageLabel.text, on: gameView)
